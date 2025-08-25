@@ -42,6 +42,39 @@ function removeTypingIndicator() {
     }
 }
 
+// Language detection function
+function detectLanguage(code) {
+    code = code.toLowerCase();
+
+    // Python
+    if (/^\s*def\s+/.test(code) || code.includes("import ")) return "python";
+
+    // JavaScript
+    if (code.includes("console.log") || code.includes("function ") || code.includes("=>")) return "javascript";
+
+    // C
+    if (code.includes("#include") || code.includes("int main")) return "c";
+
+    // C++
+    if (code.includes("iostream") || code.includes("std::") || code.includes("using namespace")) return "cpp";
+
+    // Java
+    if (code.includes("public class") || code.includes("system.out")) return "java";
+
+    // Dart / Flutter
+    if (code.includes("import 'package:flutter") || code.includes("void main()") || code.includes("widget build")) return "dart";
+
+    // Go
+    if (code.includes("package main") || code.includes("func main()") || code.includes("fmt.")) return "go";
+
+    // Rust
+    if (code.includes("fn main()") || code.includes("let mut") || code.includes("println!")) return "rust";
+
+    // Default
+    return "python";
+}
+
+
 // Append message to chat
 function appendMessage(sender, text) {
     const msgDiv = document.createElement('div');
@@ -204,7 +237,9 @@ async function sendMessage() {
         
         if (code) {
             // Ensure lang is a valid string and sanitize it
-            const safeLang = (lang && typeof lang === 'string') ? lang.replace(/[^a-zA-Z0-9]/g, '') : 'plaintext';
+            const detectedLang = lang || detectLanguage(code);
+            const safeLang = (detectedLang && typeof detectedLang === 'string') ? detectedLang.replace(/[^a-zA-Z0-9]/g, '') : 'plaintext';
+
             console.log('🔍 Language processing:', { original: lang, sanitized: safeLang });
             
             botDiv.innerHTML = `

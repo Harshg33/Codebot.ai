@@ -197,13 +197,12 @@
         }
         
         pre code {
-            background: transparent !important;
-            padding: 0 !important;
-            border-radius: 0 !important;
-            font-size: 14px;
-            line-height: 1.6;
-            color: #e6e6e6;
-            font-weight: 400;
+            background: #1b1b1b;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            overflow-x: auto;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
         
         /* Language indicator */
@@ -211,7 +210,7 @@
             content: attr(data-language);
             display: inline-block;
             color: white;
-            padding: 8px 16px;
+            padding: 6px 12px;
             font-size: 12px;
             font-weight: bold;
             border-radius: 6px;
@@ -276,7 +275,7 @@
             padding: 15px;
             background: rgba(255,255,255,0.02);
             border-radius: 8px;
-            border-left: 3px solid #4FC3F7;
+            border-left: 3px solid #00897b;
         }
         
         .msg.bot .explanation p {
@@ -289,12 +288,17 @@
         }
         
         .msg.bot .explanation h1,
-        .msg.bot .explanation h2,
+        .msg.bot .explanation h2 {
+        color: #26c6da; /* teal highlight */
+        }
         .msg.bot .explanation h3,
         .msg.bot .explanation h4 {
             margin: 20px 0 10px 0;
             color: #4FC3F7;
             font-weight: 600;
+        }
+        .msg.bot .explanation a {
+        color: #00897b;
         }
         
         .msg.bot .explanation h1 {
@@ -487,8 +491,9 @@
         }
         
         .user {
-        background: linear-gradient(135deg, #26c6da, #00897b);
-        border: 1px solid #00897b;
+        background: #00897b; /* teal solid color */
+        color: white;
+        align-self: flex-end;
         }
         .user:hover {
             box-shadow: 0 6px 20px rgba(38, 198, 218, 0.4);
@@ -501,6 +506,7 @@
             margin-right: auto;
             border: 1px solid #444;
             box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            align-self: flex-start;
         }
         
         .bot:hover {
@@ -619,9 +625,13 @@
             }
             
             .msg {
-                max-width: 95%;
-                padding: 10px;
-                margin-bottom: 10px;
+                background: #2a2a2a; /* solid dark background */
+                border-radius: 12px;
+                padding: 16px 20px;
+                max-width: 80%;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                line-height: 1.6;
+                transition: all 0.3s ease;
             }
             
             #input-box {
