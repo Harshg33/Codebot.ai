@@ -173,7 +173,7 @@ async function sendMessage() {
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 120000); // 2 minutes timeout
         
-        const res = await fetch(`http://127.0.0.1:8000/generate?prompt=${encodeURIComponent(text)}`, {
+        const res = await fetch(`https://codebot-ai.onrender.com/generate?prompt=${encodeURIComponent(text)}`, {
             method: "POST",
             signal: controller.signal
         });
